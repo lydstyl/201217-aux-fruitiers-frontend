@@ -40,8 +40,6 @@ const Products = () => (
 
     <h1>Nos produits</h1>
 
-    <img />
-
     <StaticQuery
       query={query}
       render={data => (
