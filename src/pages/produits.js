@@ -6,12 +6,28 @@ import SEO from '../components/seo'
 
 const query = graphql`
   query {
-    allStrapiRestaurant {
+    allStrapiProduct {
       edges {
         node {
-          strapiId
+          id
           name
           description
+          categories {
+            name
+          }
+          image {
+            url
+            name
+            alternativeText
+            caption
+            formats {
+              small {
+                ext
+                mime
+                name
+              }
+            }
+          }
         }
       }
     }
@@ -24,12 +40,25 @@ const Products = () => (
 
     <h1>Nos produits</h1>
 
+    <img />
+
     <StaticQuery
       query={query}
       render={data => (
         <ul>
-          {data.allStrapiRestaurant.edges.map(restaurant => (
-            <li key={restaurant.node.strapiId}>{restaurant.node.name}</li>
+          {data.allStrapiProduct.edges.map(product => (
+            <li key={product.node.strapiId}>
+              <h3>
+                {product.node.name}
+              </h3>
+
+              <p>
+                {product.node.description}
+              </p>
+
+              <img src={`http://localhost:1337${product.node.image[0].url}`} alt={product.node.image[0].alternativeText} />
+
+            </li>
           ))}
         </ul>
       )}

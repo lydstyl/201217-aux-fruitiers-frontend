@@ -32,7 +32,7 @@ module.exports = {
       options: {
         apiURL: 'http://localhost:1337',
         contentTypes: [
-          'restaurant',
+          'product',
           'category'
         ],
         queryLimit: 1000
