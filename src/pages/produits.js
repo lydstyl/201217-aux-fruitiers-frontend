@@ -56,7 +56,7 @@ const Products = () => (
 
               {/* <img src={`http://localhost:1337${product.node.image[0].url}`} alt={product.node.image[0].alternativeText} /> */}
 
-              <img src={`https://auxfruitiers.herokuapp.com${product.node.image[0].url}`} alt={product.node.image[0].alternativeText} />
+              <img src={product.node.image[0].url} alt={product.node.image[0].alternativeText} />
 
             </li>
           ))}
