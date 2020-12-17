@@ -20,11 +20,10 @@ const query = graphql`
             name
             alternativeText
             caption
+            width
             formats {
               small {
-                ext
-                mime
-                name
+                url
               }
             }
           }
@@ -56,7 +55,12 @@ const Products = () => (
 
               {/* <img src={`http://localhost:1337${product.node.image[0].url}`} alt={product.node.image[0].alternativeText} /> */}
 
-              <img src={product.node.image[0].url} alt={product.node.image[0].alternativeText} />
+              <pre>{JSON.stringify(product.node.image[0], null, 4)}</pre>
+
+              {product.node.image[0].width > 500
+
+                ? <img src={product.node.image[0].formats.small.url} alt={product.node.image[0].alternativeText} />
+                : <img src={product.node.image[0].url} alt={product.node.image[0].alternativeText} />}
 
             </li>
           ))}
