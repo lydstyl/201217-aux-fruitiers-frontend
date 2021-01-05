@@ -1,5 +1,69 @@
+@import url('https://fonts.googleapis.com/css2?family=Redressed&family=Roboto&display=swap');
+// fonts from flyer :
+// Boola Boola NF
+// Forte™
+
+$primary: #558b2f;
+$light: #85bb5c;
+$dark: #255d00;
+$secondary: #c62828;
+$max-width: 1200px;
+
 * {
+  font-family: 'Roboto', sans-serif;
   margin: 0;
   padding:0;
   box-sizing: border-box;
+}
+
+header {
+  display: flex;
+  margin-bottom: 60px;
+  background-color: $primary;
+
+  .box {
+    display: flex;
+    justify-content: space-between;
+    width: $max-width;
+    margin: auto;
+  }
+
+  h1 a {
+    line-height: 60px;
+    padding: 0 20px;;
+    font-family: 'Redressed', cursive;
+    color: white;
+  }
+
+  h1:hover {
+    background-color: $secondary;
+  }
+
+  ul {
+    display: flex;
+
+    li {
+      margin-left: 40px;
+      padding: 0 20px;
+      line-height: 60px;
+
+      a {
+        color: white
+      }
+    }
+
+    li:hover {
+      background-color: $secondary;
+    }
+  }
+}
+
+
+
+a {
+  text-decoration: none;
+}
+
+ul {
+  list-style-type: none;
 }
