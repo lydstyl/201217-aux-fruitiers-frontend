@@ -30,12 +30,13 @@ module.exports = {
     {
       resolve: 'gatsby-source-strapi',
       options: {
-        // apiURL: 'http://localhost:1337',
-        apiURL: 'https://auxfruitiers.herokuapp.com',
+        apiURL: process.env.API_URL || 'http://localhost:1337',
+        // apiURL: 'https://auxfruitiers.herokuapp.com',
         contentTypes: [
           'product',
           'category'
         ],
+        singleTypes: ['contact', 'home'],
         queryLimit: 1000
       }
     },

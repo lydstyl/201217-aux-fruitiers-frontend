@@ -37,14 +37,14 @@ const Products = () => (
   <Layout>
     <SEO title='Nos produits' />
 
-    <h1>Nos produits</h1>
+    <h2>Nos produits</h2>
 
     <StaticQuery
       query={query}
       render={data => (
         <ul>
           {data.allStrapiProduct.edges.map(product => (
-            <li key={product.node.strapiId}>
+            <li key={product.node.id}>
               <h3>
                 {product.node.name}
               </h3>
