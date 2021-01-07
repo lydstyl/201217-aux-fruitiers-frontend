@@ -3,6 +3,7 @@ import { Link, StaticQuery, graphql } from 'gatsby'
 
 import Layout from '../components/layout'
 import SEO from '../components/seo'
+import { Card } from '../components/Card/Card'
 
 const query = graphql`
   query {
@@ -41,31 +42,17 @@ const Products = () => (
 
     <StaticQuery
       query={query}
-      render={data => (
-        <ul>
-          {data.allStrapiProduct.edges.map(product => (
-            <li key={product.node.id}>
-              <h3>
-                {product.node.name}
-              </h3>
+      render={data => {
+        return (
+          <ul>
+            {data.allStrapiProduct.edges.map(product => (
 
-              <p>
-                {product.node.description}
-              </p>
+              <Card key={product.node.id} product={product} />
 
-              {/* <img src={`http://localhost:1337${product.node.image[0].url}`} alt={product.node.image[0].alternativeText} /> */}
-
-              <pre>{JSON.stringify(product.node.image[0], null, 4)}</pre>
-
-              {product.node.image[0].width > 500
-
-                ? <img src={product.node.image[0].formats.small.url} alt={product.node.image[0].alternativeText} />
-                : <img src={product.node.image[0].url} alt={product.node.image[0].alternativeText} />}
-
-            </li>
-          ))}
-        </ul>
-      )}
+            ))}
+          </ul>
+        )
+      }}
     />
 
     <Link to='/'>Revenir à l'accueil</Link>
