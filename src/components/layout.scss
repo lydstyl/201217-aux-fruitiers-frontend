@@ -187,15 +187,23 @@ footer {
   background-color: $dark;
   color: $light;
   
-  .find-us, .contact-dev {
-    line-height: 50px;
+  
+  .footer-item {
+    line-height: $s6;
     text-align: center;
+    background-color: $dark;
+
+    a {
+      color: $primary;
+    }
   }
   
   .contact-dev {
+    margin-top: -45px;
     font-size: 0.8rem;
     font-style: italic;
   }
+  
 }
 
 
