@@ -64,7 +64,9 @@ const ProductPage = () => {
         }}
       />
 
-      <Link to='/'>Revenir à l'accueil</Link>
+      <div className='back-link'>
+        <Link to='/'>Revenir à l'accueil</Link>
+      </div>
     </Layout>
 
   )

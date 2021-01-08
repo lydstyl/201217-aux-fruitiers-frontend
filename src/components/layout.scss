@@ -63,11 +63,8 @@ p{
 
 img {
   display: block;
-  margin: auto;
-}
-
-img {
   max-width: 100%;
+  margin: auto;
 }
 
 
@@ -170,6 +167,13 @@ main {
   margin: auto;
   padding: $s3;
   background-color: $light;
+}
+
+.back-link {
+  width: 100%;
+  margin-top: $s5;
+  padding: 0;
+  text-align: right;
 }
 
 
