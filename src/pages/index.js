@@ -24,7 +24,7 @@ const IndexPage = () => (
         <ReactMarkdown source={data.strapiHome.body} />}
     />
 
-    <div style={{ maxWidth: '300px', marginBottom: '1.45rem' }}>
+    <div style={{ maxWidth: '500px', margin: 'auto' }}>
       <Image />
     </div>
   </Layout>

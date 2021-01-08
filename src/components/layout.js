@@ -34,13 +34,11 @@ const Layout = ({ children }) => {
         }}
       >
         <main>{children}</main>
-        <footer style={{
-          marginTop: '2rem'
-        }}
-        >
-          Site créé par Gabriel Brun
-        </footer>
       </div>
+
+      <footer>
+        Site créé par Gabriel Brun
+      </footer>
     </>
   )
 }
