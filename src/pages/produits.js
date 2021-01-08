@@ -44,7 +44,7 @@ const Products = () => (
       query={query}
       render={data => {
         return (
-          <ul>
+          <ul className='products'>
             {data.allStrapiProduct.edges.map(product => (
 
               <Card key={product.node.id} product={product} />

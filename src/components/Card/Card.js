@@ -18,8 +18,7 @@ export const Card = ({ product }) => {
   }
 
   return (
-    <div>
-      <p>{}</p>
+    <div className='card'>
       <h3>
         {product.node.name}
       </h3>
