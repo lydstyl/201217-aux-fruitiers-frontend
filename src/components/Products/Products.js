@@ -2,6 +2,10 @@ import React, { useState } from 'react'
 
 import { Card } from '../Card/Card'
 
+// String.prototype.capitalize = function () {
+//   return this.charAt(0).toUpperCase() + this.slice(1)
+// }
+
 function checkOrUncheckCategories (categories, targetName) {
   const cats = categories.map(c => ({ ...c, checked: c.name === targetName ? !c.checked : c.checked }))
 
@@ -23,31 +27,23 @@ function getChekedNames (categories) {
 }
 
 function hasACategoryInCheckedCategoryNames (product, checkedCategoryNames) {
-  let hasACategoryChecked = false
+  if (!product.node.categories.length) {
+    return true
+  } else {
+    let hasACategoryChecked = false
 
-  product.node.categories.forEach(pcat => {
-    console.log('🚀 ~ hasACategoryInCheckedCategoryNames ~ checkedCategoryNames', checkedCategoryNames)
+    product.node.categories.forEach(pcat => {
+      if (checkedCategoryNames.includes(pcat.name)) {
+        hasACategoryChecked = true
+      }
+    })
 
-    console.log('🚀 ~ hasACategoryInCheckedCategoryNames ~ pcat.name', pcat.name)
-
-    console.log('🚀 ~ hasACategoryInCheckedCategoryNames ~ checkedCategoryNames.includes(pcat.name)', checkedCategoryNames.includes(pcat.name))
-
-    if (checkedCategoryNames.includes(pcat.name)) {
-      hasACategoryChecked = true
-    }
-  })
-
-  return hasACategoryChecked
+    return hasACategoryChecked
+  }
 }
 
 function removeUnCheckedProducts (products, checkedCategoryNames) {
-//   console.log('🚀 ~ removeUnCheckedProducts ~ checkedCategoryNames', checkedCategoryNames)
-
   const newProducts = products.filter(p => {
-    console.log('🚀 ~ removeUnCheckedProducts ~ p', p)
-
-    console.log('🚀 ~ removeUnCheckedProducts ~ hasACategoryInCheckedCategoryNames(p, checkedCategoryNames)', hasACategoryInCheckedCategoryNames(p, checkedCategoryNames))
-
     if (hasACategoryInCheckedCategoryNames(p, checkedCategoryNames)) {
       return true
     } else {
@@ -55,12 +51,12 @@ function removeUnCheckedProducts (products, checkedCategoryNames) {
     }
   })
 
-  console.log('🚀 ~ removeUnCheckedProducts ~ newProducts', newProducts)
-
   return newProducts
 }
 
 export const Products = ({ products, categories }) => {
+  const originalProducts = products
+
   const [categoriesAndProducts, setCategoriesAndProducts] = useState({ categories: categories.map(c => ({ name: c.node.name, id: c.node.id, checked: true })), products })
 
   function handleOnChange (evt) {
@@ -70,35 +66,28 @@ export const Products = ({ products, categories }) => {
     newCategoriesAndProducts.categories = checkOrUncheckCategories(newCategoriesAndProducts.categories, evt.target.name)
 
     // get an array with the checked category names or empty string ""
-    let checkedCategoryNames = getChekedNames(newCategoriesAndProducts.categories)
-    // console.log('🚀 ~ handleOnChange ~ checkedCategoryNames', checkedCategoryNames)
+    const checkedCategoryNames = getChekedNames(newCategoriesAndProducts.categories)
 
-    checkedCategoryNames = [...checkedCategoryNames, ''] // add '' so if we forgot to add a category to a product it can't be filtered
-    // console.log('🚀 ~ handleOnChange ~ checkedCategoryNames', checkedCategoryNames)
-
-    // set products
-
-    newCategoriesAndProducts.products = removeUnCheckedProducts(newCategoriesAndProducts.products, checkedCategoryNames)
+    newCategoriesAndProducts.products = removeUnCheckedProducts(originalProducts, checkedCategoryNames)
 
     setCategoriesAndProducts(newCategoriesAndProducts)
   }
 
   return (
     <>
-      <form className='filters'>
-        <h3>Filtres</h3>
+      <h3>Filtres</h3>
 
+      <form className='filters'>
         {categoriesAndProducts.categories.map(c =>
 
           <div className='filter' key={c.id}>
-            <label>{c.name}</label>
+            <label style={{ textTransform: 'capitalize' }}>{c.name}</label>
 
             <input onChange={handleOnChange} type='checkbox' name={c.name} checked={c.checked} value={c.checked} />
           </div>
 
         )}
 
-        {/* <input type="button" value=""/> */}
       </form>
 
       <ul className='products'>

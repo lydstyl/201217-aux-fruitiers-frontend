@@ -29,7 +29,7 @@ export const Card = ({ product }) => {
         {product.node.description}
       </p>
 
-      <pre>{JSON.stringify(product.node.categories)}</pre>
+      {/* <pre>{JSON.stringify(product.node.categories)}</pre> */}
     </div>
   )
 }
