@@ -7,7 +7,7 @@
 
 import React from 'react'
 import PropTypes from 'prop-types'
-import { useStaticQuery, graphql } from 'gatsby'
+import { useStaticQuery, graphql, Link } from 'gatsby'
 
 import Header from './header'
 import './layout.scss'
@@ -30,7 +30,13 @@ const Layout = ({ children }) => {
       <main>{children}</main>
 
       <footer>
-        Site créé par Gabriel Brun
+        <div className='find-us'>
+          <Link to='/contact/'>Contactez </Link>nous !
+        </div>
+
+        <div className='contact-dev'>
+          Besoin d'une web app ? <a target='_blank' rel='noreferrer' href='https://www.developpeur-react-nord.com/'>Contactez le développeur !</a>
+        </div>
       </footer>
     </>
   )

@@ -86,7 +86,7 @@ header {
     max-width: 300px;
     margin: auto;
     justify-content: space-between;
-    padding: $s4 0;
+    padding: $s4 0 $s3;
 
     li {
       margin: 0 $s4;
@@ -179,15 +179,38 @@ footer {
   height: $s6;
   line-height: $s6;
   margin-top: $s6;
-  font-size: 0.8rem;
-  font-style: italic;
   text-align: center;
   background-color: $dark;
   color: $light;
+  
+  .find-us, .contact-dev {
+    line-height: 50px;
+    text-align: center;
+  }
+  
+  .contact-dev {
+    font-size: 0.8rem;
+    font-style: italic;
+  }
 }
 
 
 /* PRODUCT PAGE */
+
+h3 {
+  margin: 0;
+}
+
+form.filters {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  margin-bottom: $s5;
+
+  input {
+    margin-left: $s2;
+  }
+}
 
 ul.products {
   display: block;
