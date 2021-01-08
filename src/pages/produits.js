@@ -3,7 +3,7 @@ import { Link, StaticQuery, graphql } from 'gatsby'
 
 import Layout from '../components/layout'
 import SEO from '../components/seo'
-import { Card } from '../components/Card/Card'
+import { Products } from '../components/Products/Products'
 
 const query = graphql`
   query {
@@ -31,32 +31,43 @@ const query = graphql`
         }
       }
     }
+    allStrapiCategory {
+      edges {
+        node {
+          name
+          id
+          parent {
+            id
+          }
+        }
+      }
+    }
   }
 `
 
-const Products = () => (
-  <Layout>
-    <SEO title='Nos produits' />
+const ProductPage = () => {
+  return (
 
-    <h2>Nos produits</h2>
+    <Layout>
+      <SEO title='Nos produits' />
 
-    <StaticQuery
-      query={query}
-      render={data => {
-        return (
-          <ul className='products'>
-            {data.allStrapiProduct.edges.map(product => (
+      <h2>Nos produits</h2>
 
-              <Card key={product.node.id} product={product} />
+      <StaticQuery
+        query={query}
+        render={data => {
+          return (
 
-            ))}
-          </ul>
-        )
-      }}
-    />
+            <Products products={data.allStrapiProduct.edges} categories={data.allStrapiCategory.edges} />
 
-    <Link to='/'>Revenir à l'accueil</Link>
-  </Layout>
-)
+          )
+        }}
+      />
 
-export default Products
+      <Link to='/'>Revenir à l'accueil</Link>
+    </Layout>
+
+  )
+}
+
+export default ProductPage

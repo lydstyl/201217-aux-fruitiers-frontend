@@ -28,6 +28,8 @@ export const Card = ({ product }) => {
       <p>
         {product.node.description}
       </p>
+
+      <pre>{JSON.stringify(product.node.categories)}</pre>
     </div>
   )
 }
