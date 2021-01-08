@@ -4,21 +4,32 @@
 // Forte™
 
 $primary: #558b2f;
-$light: #85bb5c;
+// $light: #85bb5c;
+$light: #00ff00;
 $dark: #255d00;
 $secondary: #c62828;
-$max-width: 1200px;
+$max-width: 960px;
+
+/* SPACES */
+$s1: 4px;
+$s2: 8px;
+$s3: 16px;
+$s4: 32px;
+$s5: 64px;
+$s6: 100px;
 
 * {
-  font-family: 'Roboto', sans-serif;
+  box-sizing: border-box;
+  line-height: 2;
   margin: 0;
   padding:0;
-  box-sizing: border-box;
+  font-family: 'Roboto', sans-serif;
+  text-align: justify;
 }
 
 header {
   display: flex;
-  margin-bottom: 60px;
+  margin-bottom: $s5;
   background-color: $primary;
 
   .box {
@@ -29,9 +40,9 @@ header {
   }
 
   h1 a {
-    line-height: 60px;
+    line-height: $s5;
     padding: 0 20px;;
-    font-family: 'Redressed', cursive;
+    font-family: 'Redressed', 'cursive';
     color: white;
   }
 
@@ -43,9 +54,9 @@ header {
     display: flex;
 
     li {
-      margin-left: 40px;
-      padding: 0 20px;
-      line-height: 60px;
+      margin-left: $s5;
+      padding: 0 $s4;
+      line-height: $s5;
 
       a {
         color: white
@@ -67,3 +78,20 @@ a {
 ul {
   list-style-type: none;
 }
+
+h1, h2, h3, h4 {
+  margin: $s4 0;
+  font-family: 'Redressed', cursive;
+}
+
+h2 {
+  margin: $s5 0;
+}
+
+p{
+  margin: $s4 0;
+}
+
+// img{
+//   margin: $s4 0;
+// }
